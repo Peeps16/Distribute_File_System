@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File List</title>
+    <link rel="stylesheet" type="text/css" href="../static/file.css">
+</head>
+<body>
+    <h1>File List</h1>
+
+    <form method="POST" action="{{ url_for('file_list') }}">
+        <label for="file_id">Select a file to download:</label>
+        <select name="file_id" id="file_id">
+            {% for file_id, file_name in file_list %}
+                <option value="{{ file_id }}">{{ file_name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Download</button>
+    </form>
+    
+    <div class="file-list">
+        <h2>Available Files:</h2>
+        <ul>
+            {% for file_id, file_name in file_list %}
+                <li>{{ file_name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
